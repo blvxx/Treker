@@ -2,46 +2,36 @@
 
 **Build better habits. Live better.**
 
-«Вдох» — персональная платформа для формирования полезных привычек, отказа от вредных привычек и улучшения повседневного образа жизни. Долгосрочная концепция объединяет привычки, отказ от курения, дыхательные практики, тренировки, питание, AI-помощника и Telegram.
+«Вдох» — мобильное приложение для формирования полезных привычек, отказа от вредных привычек и более осознанного образа жизни. Оно объединит привычки, поддержку отказа от курения, дыхательные практики, тренировки, питание и интегрированного AI-помощника.
 
-**Первый релиз:** private / personal use  
-**Платформенная цель:** Web + Mobile + Telegram  
-**Языки:** Русский и English
+**Основная платформа:** Android  
+**Первый канал распространения:** Google Play  
+**Первый релиз:** private testing / personal use  
+**Языки:** Русский и English  
+**Дополнительные интеграции:** Telegram; backend для синхронизации и AI
 
 ## Текущее состояние
 
-Проект находится на этапе объединения и архитектурной подготовки.
+Проект находится на этапе проектирования и подготовки мобильной архитектуры.
 
-Исходная реализация Treker — самостоятельный HTML/CSS/JavaScript прототип. Она уже включает:
+Исходный Treker — браузерный HTML/CSS/JavaScript прототип. Он уже содержит таймер отказа от курения, ориентировочную статистику, журнал тяги, дыхательные таймеры и визуализацию, локальное хранение и экспорт JSON.
 
-- таймер с момента отказа от курения и временные этапы;
-- ориентировочную статистику невыкуренных сигарет и экономии;
-- журнал тяги с интенсивностью и заметками;
-- дыхательные таймеры и визуализацию;
-- локальное сохранение в браузере;
-- экспорт данных в JSON;
-- адаптивный интерфейс.
+HabitForge пока содержит только README с концепцией трекера привычек. Его идеи будут реализованы в мобильном приложении «Вдох»; готового кода для переноса нет.
 
-HabitForge пока содержит только README с концепцией трекера привычек. Его функции будут реализованы внутри единого приложения «Вдох»; отдельный готовый код HabitForge не переносится.
-
-## Запуск текущего прототипа
-
-Сборка и зависимости пока не нужны. Откройте `index.html` в современном браузере.
-
-> Сейчас данные хранятся локально в браузере. Аккаунтов, backend и синхронизации между устройствами пока нет. Демонстрационные данные и информационные материалы требуют дальнейшей проверки.
+Существующий Treker сохраняется как функциональный и визуальный reference. Его HTML/CSS не является основой Android UI: логику и полезные сценарии будем переносить в React Native, адаптируя интерфейс под мобильные паттерны.
 
 ## Целевая архитектура
 
-- Web: Next.js + TypeScript
-- Mobile: React Native + Expo
+- Android app: React Native + Expo + TypeScript
+- Local storage: SQLite (через Expo SQLite) для локальных данных и offline-first сценариев
 - Backend: Python + FastAPI
 - Database: PostgreSQL
-- Background jobs/cache: Redis
-- AI: серверный AI gateway с ограниченными инструментами
-- Telegram: bot integration
-- QA: Pytest, Playwright, Maestro, GitHub Actions
+- Background jobs/cache: Redis — когда появится необходимость в серверных фоновых задачах
+- AI: серверный AI gateway с ограниченными инструментами; секреты не хранятся в приложении
+- Telegram: дополнительная интеграция для уведомлений и быстрых действий
+- QA: Jest, React Native Testing Library, Pytest, Maestro, GitHub Actions
 
-Стек является целевым направлением, а не утверждением, что эти компоненты уже реализованы.
+iOS может рассматриваться позднее благодаря React Native, но не входит в обязательный объём первого релиза. Отдельная веб-версия не является целью текущего этапа.
 
 ## Документация
 
@@ -58,6 +48,6 @@ HabitForge пока содержит только README с концепцией
 
 # English
 
-**Vdoh** is a personal healthy-lifestyle platform concept focused on building sustainable habits and leaving harmful ones behind. The long-term product combines habit tracking, smoking cessation support, breathing exercises, workouts, nutrition, an integrated AI assistant, and Telegram.
+**Vdoh** is an Android-first mobile app concept for building sustainable habits and leaving harmful ones behind. It will combine habit tracking, smoking cessation support, breathing exercises, workouts, nutrition, and an integrated AI assistant.
 
-The current codebase is an early Russian-language, browser-only prototype. The bilingual experience, backend, mobile app, AI features, and Telegram integration are planned and are not yet implemented.
+The first distribution target is Google Play, preceded by private testing. The current codebase is an early browser-only prototype; the native mobile app, backend, AI features, and Telegram integration are planned and are not yet implemented.
